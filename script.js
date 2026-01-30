@@ -6,6 +6,14 @@ casas.forEach(casa => {
 });
 
 function clicknacasa(event) {
-    const casaClicada = event.target;
-    casaClicada.innertext = jogadorAtual;
+     const casaClicada = event.target;
+    if (casaClicada.innerText !== '') {
+        return;
+    }
+    casaClicada.innerText = jogadorAtual;
+    if (jogadorAtual === 'X') {
+        jogadorAtual = 'O';
+    } else {
+        jogadorAtual = 'X';
+    }
 }
