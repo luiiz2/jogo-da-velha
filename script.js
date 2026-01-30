@@ -1,10 +1,25 @@
 const casas = document.querySelectorAll('.casa');
 let jogadorAtual = 'X';
+let nomeX = '';
+let nomeO = '';
+
+nomejogador();
 
 casas.forEach(casa => {
     casa.addEventListener('click', clicknacasa);
 });
 
+function nomejogador() {
+    const inputX = prompt("Digite o nome do jogador X:");
+    const inputO = prompt("Digite o nome do jogador O:");
+    if (!inputX || !inputO) {
+        alert("Por favor, insira nomes para os jogadores.");
+        return;
+    }
+    nomeX = inputX
+    nomeO = inputO
+    alert(`Jogador X: ${nomeX}\nJogador O: ${nomeO}`);
+}
 function clicknacasa(event) {
      const casaClicada = event.target;
     if (casaClicada.innerText !== '') {
@@ -12,6 +27,11 @@ function clicknacasa(event) {
     }
     casaClicada.innerText = jogadorAtual;
     if (checarVencedor()) {
+        if (jogadorAtual === 'X') {
+           jogadorAtual = nomeX;
+        } else {
+            jogadorAtual = nomeO;
+        }
         setTimeout(() => {
             alert(`Jogador ${jogadorAtual} venceu!`);
             reiniciarJogo();
