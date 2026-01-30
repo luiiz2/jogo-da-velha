@@ -23,6 +23,15 @@ function clicknacasa(event) {
     } else {
         jogadorAtual = 'X';
     }
+    for (let i = 0; i < casas.length; i++) {
+        if (casas[i].innerText === '') {
+            return;
+        }
+    }
+    setTimeout(() => {
+        alert('Empate!');
+        reiniciarJogo();
+    }, 100);
 }
 
 function reiniciarJogo() {
