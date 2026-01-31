@@ -2,6 +2,8 @@ const casas = document.querySelectorAll('.casa');
 let jogadorAtual = 'X';
 let nomeX = '';
 let nomeO = '';
+let vitoriasX = 0;
+let vitoriasO = 0;
 
 nomejogador();
 
@@ -14,7 +16,7 @@ function nomejogador() {
     const inputO = prompt("Digite o nome do jogador O:");
     if (!inputX || !inputO) {
         alert("Por favor, insira nomes para os jogadores.");
-        return;
+        return nomejogador();
     }
     nomeX = inputX
     nomeO = inputO
@@ -82,3 +84,22 @@ function checarVencedor() {
     }
     return false;
         }
+
+    function numerodevitorias() {
+    if (checarVencedor()) {
+        if (jogadorAtual === 'X') {
+            vitoriasX++;
+        } else {
+            vitoriasO++;
+        }
+    }
+    }
+    
+    function reiniciarJogototal() {
+    reiniciarJogo();
+    vitoriasX = 0;
+    vitoriasO = 0;
+    nomejogador();
+}
+    
+document.getElementById('reset').addEventListener('click', reiniciarJogototal);
